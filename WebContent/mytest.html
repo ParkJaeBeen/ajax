@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+	</tr>
+	<tr>
+		<td><input type="text" id="one"></td>
+		<td><input type="text" id="two"></td>
+		<td><input type="text" id="three"></td>
+	</tr>
+	<tr>
+		<th><button onclick="cone()">change</button></th>
+		<th><button onclick="ctwo()">change</button></th>
+		<th><button onclick="cthree()">change</button></th>
+	</tr>
+	<tr>
+		<th colspan="3" style="margin:auto"><input type="text" id="change"><button onclick="why()">change</button></th>
+	</tr>
+</table>
+<script>
+var input = document.querySelectorAll('input');
+var button = document.querySelectorAll('button');
+var change = document.querySelector('input[id=change]');
+	function cone() {
+		var cOne = {
+				one:1,
+				two:2,
+				three:3
+			}
+		for(var one of input)
+		{
+			if(one.id)
+			{
+				one.value = cOne[one.id];
+				change.value = '변신';
+			}
+		}
+	}
+	
+	function ctwo() {
+		var ctwo = {
+			one:'a',
+			two:'b',
+			three:'c'
+		}
+		for(var two of input)
+		{
+			if(two.id)
+			{
+				two.value = ctwo[two.id];
+			}
+		}
+	}
+	
+	function cthree() {
+		var cThree = {
+				one:'ㄱ',
+				two:'ㄴ',
+				three:'ㄷ'
+			}
+		for(var three of input)
+		{
+			if(three.id)
+			{
+				three.value = cThree[three.id];
+			}
+		}
+	}
+	
+	function why(){
+		if(change.value=='변신')
+		{
+			alert('버튼으로 변한다');
+			change.type = 'button';
+		}
+	}
+</script>
+</body>
+</html>

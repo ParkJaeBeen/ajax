@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="div1">div1</div>
+<div id="div1">div2</div>
+<div id="div1">div3</div>
+<script>
+var divs = document.querySelectorAll('div');
+var contents = {
+		div1 : 'hello',
+		div2 : 'haha',
+		div3 : 'hahaha'
+};
+for(var i=0;i<divs.length;i++)
+{
+	var div = divs[i];
+	div.innerText = contents[div.innerText];
+}
+for(var i in divs)
+{
+	var div = divs[i];
+	console.log(div.innerText);
+}
+
+for(var div of divs)
+{
+	console.log(div.innerText);	
+}
+console.log(divs);
+</script>
+</body>
+</html>

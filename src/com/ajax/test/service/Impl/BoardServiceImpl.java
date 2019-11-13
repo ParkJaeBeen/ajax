@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ajax.test.DAO.BoardDAO;
-import com.ajax.test.DAO.Impl.BoardDAOImpl;
+import com.ajax.test.dao.Impl.BoardDAOImpl;
+import com.ajax.test.dao.BoardDAO;
 import com.ajax.test.service.BoardService;
 
 public class BoardServiceImpl implements BoardService {

@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,13 +18,13 @@ import com.ajax.test.service.Impl.BoardServiceImpl;
 import com.google.gson.Gson;
 
 
-@WebServlet(name="/BoardController", urlPatterns= {"/ajax/board/*","/jsp/board/*"},loadOnStartup = 1)
+@WebServlet(name="BoardController", urlPatterns= {"/ajax/board/*","/jsp/board/*"},loadOnStartup = 1)
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService bs = new BoardServiceImpl();
 	private Gson gs = new Gson();
     
-//	public BoardController() 
+//	public BoardController()  
 //	{
 //		System.out.println("1.보드컨트롤러의 생성자");
 //	}
@@ -48,7 +47,7 @@ public class BoardController extends HttpServlet {
 				List<Map<String,String>> bl = bs.selectBoardList(null);
 				pw.print(gs.toJson(bl));
 			}
-			else if("board".equals(cmd))
+			else if("content".equals(cmd))
 			{
 				System.out.println(cmd);
 				Map<String,String> nm = new HashMap<>();

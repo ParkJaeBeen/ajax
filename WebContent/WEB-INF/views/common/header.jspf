@@ -4,3 +4,4 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="cssPath" value="${pageContext.request.contextPath}/bt/css"/>
 <c:set var="jsPath" value="${pageContext.request.contextPath}/bt/js"/>
+<c:set var="ver" value="1.0.1"/> 

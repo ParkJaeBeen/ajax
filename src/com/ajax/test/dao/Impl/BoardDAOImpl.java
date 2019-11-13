@@ -1,4 +1,4 @@
-package com.ajax.test.DAO.Impl;
+package com.ajax.test.dao.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ajax.test.DAO.BoardDAO;
 import com.ajax.test.common.DBCon;
+import com.ajax.test.dao.BoardDAO;
 
 public class BoardDAOImpl implements BoardDAO {
 
@@ -101,7 +101,7 @@ public class BoardDAOImpl implements BoardDAO {
 		try {
 			con = DBCon.getCon();
 			String sql = "insert into Board_table(bt_num,bt_title,bt_content,ut_num,credat,cretim,moddat,modtim)";
-			sql += "values(seq_bt_num.nextval,?,?,?,to_char(sysdate,'YYYY-MM-DD'),to_char(sysdate,'HH24:MI:SS'),to_char(sysdate,'YYYY-MM-DD'),to_char(sysdate,'HH24:MI:SS'))";
+			sql += " values(seq_bt_num.nextval,?,?,?,to_char(sysdate,'YYYY-MM-DD'),to_char(sysdate,'HH24:MI:SS'),to_char(sysdate,'YYYY-MM-DD'),to_char(sysdate,'HH24:MI:SS'))";
 			
 			ps = con.prepareStatement(sql);
 			ps.setString(1, board.get("bt_title"));

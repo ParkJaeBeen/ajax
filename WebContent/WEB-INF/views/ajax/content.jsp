@@ -18,7 +18,7 @@
 <script>
 window.onload = function(){
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET','/ajax/board/content?cmd=board&bt_num=${param.bt_num}')
+	xhr.open('GET','/ajax/board/content?cmd=content&bt_num=${param.bt_num}')
 	xhr.onreadystatechange=function(){
 		if(xhr.readyState==4){
 			if(xhr.status==200){
@@ -48,8 +48,9 @@ window.onload = function(){
 				html += '<td>'+board.modtim+'</td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<button>삭제하기</button>'
-				html += '</tr>';
+				html += '<button onclick="goPage(\'/ajax/update?bt_num=${param.bt_num}\')">수정하기</button>'
+				html += '<button onclick="goPage(\'/ajax/list\')">리스트가기</button>'
+				html += '</tr>'; 
 				tBody.innerHTML = html;
 			}
 		}

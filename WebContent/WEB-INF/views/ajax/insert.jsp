@@ -47,7 +47,7 @@ function save(){
 		bt_content:document.getElementById('bt_content').value,
 		ut_num:document.getElementById('ut_num').value
 	}
-	console.log(param);
+//	console.log(param);
 	param = JSON.stringify(param);	//구조체 param 을 json 형태의 string 으로 변환
 	xhr.send(param);
 }
