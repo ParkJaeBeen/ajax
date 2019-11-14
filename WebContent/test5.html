@@ -9,15 +9,28 @@
 <input type="text" id="selectSido">
 <button onclick="selectedSido()">선택</button>
 <script>
-var sidos = ["서울","경기","강원","대구","대전"];
-
-var sido = document.querySelector('#sido');
-var html = '<option value="">선택</option>';
-for(var s of sidos)
-{
-	html += '<option value="'+s+'">'+s+'</option>';	
+window.onload = function(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','/test');
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				var sidos = JSON.parse(xhr.responseText);
+				var sido = document.querySelector('#sido');
+				var html = '<option value="">선택</option>';
+				console.log(sidos);
+				for(var s of sidos)
+				{
+					html += '<option value="'+s.s_num+'">'+s.s_name+'</option>';	
+				}
+				sido.innerHTML = html;
+				}
+			}
+		}
+	xhr.send();
 }
-sido.innerHTML = html;
+
+	
 
 function selectedSido() {
 	document.querySelector('#sido').value = document.querySelector('#selectSido').value;

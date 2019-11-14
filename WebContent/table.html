@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+	<table class="table table-bordered">
+		<tr>
+			<th data-col="s_num">번호</th>
+			<th data-col="s_name">시도</th>
+		</tr>
+		<tbody id="tBody">
+		</tbody>
+	</table>
+</div>
+<script>
+window.onload = function() {
+	var ths = document.querySelectorAll('table tr>th[data-col]');
+	var cols = [];
+	for(var idx in ths)
+	{
+		var th = ths[idx];
+		if(ths.hasOwnProperty(idx)){
+			cols.push(th.getAttribute('data-col'));
+		}
+	}
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','/test/addr');
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				var sdList = JSON.parse(xhr.responseText);
+				var html = '';
+				for(var sido of sdList){
+					html += '<tr>';
+					for(var col of cols){
+						html +='<td>'+sido[col]+'</td>';
+					}
+					html += '</tr>';
+				}
+				document.querySelector('#tBody').innerHTML = html;
+			}
+		}
+	}
+	xhr.send();
+}
+
+</script>
+</body>
+</html>

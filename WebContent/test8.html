@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open('GET','/test'); 
+xhr.onreadystatechange = function(){
+	if(xhr.readyState==4){		//서버가 완벽하게 준비되어 있고	
+		if(xhr.status==200){	//연결이 제대로 되었을 때
+			console.log(JSON.parse(xhr.responseText));
+			document.write(xhr.responseText);	//조건을 걸어라
+		}else{
+			document.write(xhr.responseText);
+		}
+	}
+}
+xhr.send();
+</script>
+</body>
+</html>
