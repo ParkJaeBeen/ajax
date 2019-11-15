@@ -59,7 +59,13 @@ public class AddressDAOImpl implements AddressDAO {
 	public static void main(String[] args) 
 	{
 		AddressDAO ado = new AddressDAOImpl();
-		System.out.println(ado.selectSidoList(null));
+		List<Map<String,String>> adList = ado.selectSidoList(null);
+		List<String> sList = new ArrayList<>();
+		for(int i=0;i<adList.size();i++)
+		{
+			sList.add(adList.get(i).get("s_name"));
+		}
+		System.out.println(sList);
 	}
 
 }

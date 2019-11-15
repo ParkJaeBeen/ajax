@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="rDiv">
+	<div id="inputDiv">
+		<label for="id">ID : </label>
+		<input type="text" id="id" onkeyup="findId(this)">
+	</div>
+	<ul id="ulId">
+	</ul>
+</div>
+<script>
+function findId(f){
+	var xhr = new XMLHttpRequest();
+	var url = '/list?';
+	if(f.value.trim().length>0){
+		url+='id='+f.value.trim();
+	}
+	xhr.open('GET',url);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==xhr.DONE){
+			var html='';
+			if(xhr.status==200){
+				var idList = JSON.parse(xhr.responseText);
+				for(var id of idList){
+					html += '<li>'+id+'</li>';
+				}
+			}
+			document.querySelector('#ulId').innerHTML = html;
+		}
+	}
+	xhr.send();
+}
+</script>
+</body>
+</html>
